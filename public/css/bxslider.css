@@ -1,0 +1,31 @@
+/*スライドショー*/
+.bxslider {
+  position: relative; /* 今の位置を基準 */
+  background: #50a7a7;
+  top: 5px; /* 上から10px */
+}
+.bxslider img {
+  display: block;
+  margin: 0 auto;
+}
+
+/* 枠線の削除 */
+.bx-wrapper {
+  background-color: transparent;
+  margin: 0px auto;
+  border: none;
+  box-shadow: none;
+}
+.bx-wrapper img {
+  display: block;
+  margin: 0px auto;
+}
+
+.bx-wrapper {
+  overflow: hidden;
+}
+.bx-viewport {
+  overflow: visible !important;
+  width: 770px !important; /* スライド画像の横幅 */
+  margin: 0 auto;
+}
