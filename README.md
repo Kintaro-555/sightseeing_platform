@@ -3,7 +3,6 @@
 
 # Requirement
 * node v14.14.4
-*  
 # Usage
 ```bash
 git clone git@github.com:Kodai-Okimoto/sightseeing_platform.git
