@@ -12,14 +12,8 @@ docker-compose exec app bash
 node index.js
 ```
 # Note
-- 観光地ランキング
-観光地の動的収集（スクレイピング）
-データベース格納
-- 掲示板
- 画像投稿機能
- 絞り込み機能（国名）
-- 各種SNSとの連携
- Twitter API
- Instagram Graph API
+- 観光地ランキング（観光地の動的収集（スクレイピング）、データベース格納）
+- 掲示板（ 画像投稿機能、絞り込み機能（国名））
+- 各種SNSとの連携（ Twitter API、Instagram Graph API）
 - セキュリティ（XSS、SQLインジェクション、CSRF）
 - デプロイ(パブリッククラウド)
