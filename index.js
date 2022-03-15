@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 
-const basicAuth = require('basic-auth-connect')
+const basicAuth = require('basic-auth-connect');
 
 /*
 app.use(basicAuth(function(user,pass){
@@ -16,12 +16,12 @@ app.set('view engine', 'pug');
 
 const postsHandler = require('./lib/posts-handler');
 const util = require('./lib/handler-util');
-var errorhandler = require('errorhandler');
+const errorhandler = require('errorhandler');
 
 
 //静的ファイルの設定
 app.use(express.static('public'));
-app.use('/posts',basicAuth('admin','admin'))
+app.use('/posts',basicAuth('admin','1234'))
 
 //トップページルーティング
 app.get('/', function(req, res)  {
@@ -35,7 +35,6 @@ app.get('/ranking', function(req, res) {
 
 /*
 app.all('/posts', basicAuth(function(user, password) {
-  //res.render('posts')
   return user === "admin" && password === 'admin';
 }));
 */
@@ -43,18 +42,19 @@ app.all('/posts', basicAuth(function(user, password) {
 
 //投稿ページルーティング
 app.all('/posts', function(req, res) {
-  //res.render('posts')
   postsHandler.handle(req, res);
-  
 });
 
 /*
-//投稿ページ削除
-app.delete(`/posts?delete=1`, function(req, res) {
-  postsHandler.handleDelete(req, res);
+app.post('/posts', function(req, res) {
+  postsHandler.handle(req, res);
 });
 */
 
+//投稿ページ削除
+app.post(`/posts/:id`, function(req, res) {
+  postsHandler.handleDelete(req, res);
+});
 
 /*
 //投稿ページpostルーティング
@@ -67,6 +67,7 @@ app.post('/posts',function(req, res) {
 app.get('/contact', function(req, res) {
   res.sendFile(__dirname + '/views/contact.html');
 });
+
 //テストルーティング
 app.get('/test', function(req, res) {
   res.sendFile(__dirname + '/views/test.html');
@@ -85,7 +86,6 @@ app.use(function(req, res, next) {
   next(error);
 });
 app.use(errorhandler());
-
 
 //ポートの指定
 const port = 8080;
